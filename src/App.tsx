@@ -86,36 +86,42 @@ function App() {
   }
 
   return (
-    <div className="container">
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <NoteList
-              availableTags={tags}
-              notes={notesWithTags}
-              onUpdateTag={updateTag}
-              onDeleteTag={deleteTag}
-            />
-          }
-        />
-        <Route
-          path="/new"
-          element={
-            <NewNote onSubmit={onCreateNote} onAddTag={addTag} availableTags={tags} />
-          }
-        />
-        <Route path="/:id" element={<NoteLayout notes={notesWithTags} />}>
-          <Route index element={<Note onDelete={onDeleteNote} />} />
+    <div className="bg-[#f9faf5] min-h-screen text-grey font-medium">
+      <div className="container py-4">
+        <Routes>
           <Route
-            path="edit"
+            path="/"
             element={
-              <EditNote onSubmit={onUpdateNote} onAddTag={addTag} availableTags={tags} />
+              <NoteList
+                availableTags={tags}
+                notes={notesWithTags}
+                onUpdateTag={updateTag}
+                onDeleteTag={deleteTag}
+              />
             }
           />
-        </Route>
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
+          <Route
+            path="/new"
+            element={
+              <NewNote onSubmit={onCreateNote} onAddTag={addTag} availableTags={tags} />
+            }
+          />
+          <Route path="/:id" element={<NoteLayout notes={notesWithTags} />}>
+            <Route index element={<Note onDelete={onDeleteNote} />} />
+            <Route
+              path="edit"
+              element={
+                <EditNote
+                  onSubmit={onUpdateNote}
+                  onAddTag={addTag}
+                  availableTags={tags}
+                />
+              }
+            />
+          </Route>
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </div>
     </div>
   );
 }

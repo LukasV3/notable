@@ -3,6 +3,7 @@ import ReactSelect from "react-select";
 import { Tag } from "../App";
 import { useMemo, useState } from "react";
 import { createPortal } from "react-dom";
+import { PencilSquareIcon } from "@heroicons/react/24/solid";
 
 type SimplifiedNote = {
   tags: Tag[];
@@ -46,20 +47,24 @@ export function NoteList({
 
   return (
     <>
-      <div className="flex justify-between items-center mb-4">
-        <h1>Notes</h1>
+      <div className="flex flex-wrap justify-between items-center gap-4 mb-4">
+        <h1 className="text-3xl">Notes</h1>
 
-        <div className="flex gap-x-2 flex-wrap">
-          <Link to="/new">
-            <button className="border border-grey rounded px-2.5 py-1">Create</button>
-          </Link>
-
+        <div className="flex gap-x-2 gap-y-1 flex-wrap">
           <button
             onClick={() => setShowEditTagsModal(true)}
-            className="border border-grey rounded px-2.5 py-1"
+            className="px-4 py-1.5 border border-[#edeee7] text-xs rounded flex items-center gap-x-1.5"
           >
+            <PencilSquareIcon className="w-3 h-3" />
             Edit Tags
           </button>
+
+          <Link
+            to="/new"
+            className="px-4 py-1.5 bg-volt text-grey text-xs rounded flex items-center gap-x-1.5 hover:bg-grey-dark hover:text-white duration-150"
+          >
+            <span className="text-base leading-4">+</span> Add new note
+          </Link>
         </div>
       </div>
 
