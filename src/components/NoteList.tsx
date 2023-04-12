@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import ReactSelect from "react-select";
-import { Tag } from "./App";
+import { Tag } from "../App";
 import { useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 
