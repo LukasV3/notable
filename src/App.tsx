@@ -86,8 +86,8 @@ function App() {
   }
 
   return (
-    <div className="bg-[#f9faf5] min-h-screen text-grey font-medium">
-      <div className="container py-4">
+    <div className="bg-volt-light min-h-screen dark:bg-[#0d0f10]">
+      <div className="container py-6">
         <Routes>
           <Route
             path="/"

@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useNote } from "./NoteLayout";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/solid";
 
 type NoteProps = {
   onDelete: (id: string) => void;
@@ -12,16 +13,16 @@ export function Note({ onDelete }: NoteProps) {
 
   return (
     <>
-      <div className="grid grid-cols-2 mb-4">
-        <div>
-          <h1>{note.title}</h1>
+      <div className="flex justify-between gap-x-4 mb-8">
+        <div className="flex flex-col justify-between gap-y-6">
+          <h1 className="text-3xl">{note.title}</h1>
 
           {note.tags.length > 0 && (
             <ul className="flex gap-2 flex-wrap">
               {note.tags.map((tag) => (
                 <li
                   key={tag.id}
-                  className="border border-grey rounded px-2.5 py-1 font-bold text-xs"
+                  className="bg-volt rounded-full px-2.5 py-1 font-bold text-xs dark:text-grey"
                 >
                   {tag.label}
                 </li>
@@ -30,26 +31,38 @@ export function Note({ onDelete }: NoteProps) {
           )}
         </div>
 
-        <div className="flex gap-x-2 items-start justify-end flex-wrap">
-          <Link to={`/${note.id}/edit`}>
-            <button className="border border-grey rounded px-2.5 py-1">Edit</button>
-          </Link>
-          <button
-            onClick={() => {
-              onDelete(note.id);
-              navigate("/");
-            }}
-            className="border border-grey rounded px-2.5 py-1"
-          >
-            Delete
-          </button>
+        <div className="flex flex-col justify-between items-end gap-y-6">
           <Link to="/">
-            <button className="border border-grey rounded px-2.5 py-1">Back</button>
+            <button className="btn btn-volt">
+              <span className="text-base leading-4">&#60;</span> Back
+            </button>
           </Link>
+
+          <div className="flex flex-wrap justify-end gap-2">
+            <Link to={`/${note.id}/edit`}>
+              <button className="btn btn-border">
+                <PencilSquareIcon className="w-3 h-3 shrink-0" />
+                Edit note
+              </button>
+            </Link>
+
+            <button
+              onClick={() => {
+                onDelete(note.id);
+                navigate("/");
+              }}
+              className="btn btn-grey"
+            >
+              <TrashIcon className="w-3 h-3 shrink-0" />
+              Delete note
+            </button>
+          </div>
         </div>
       </div>
 
-      <ReactMarkdown>{note.markdown}</ReactMarkdown>
+      <ReactMarkdown className="bg-white p-4 rounded-lg min-h-[360px] dark:bg-[#161818] dark:border-none">
+        {note.markdown}
+      </ReactMarkdown>
     </>
   );
 }

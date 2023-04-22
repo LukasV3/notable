@@ -3,3 +3,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply px-4 py-1.5 text-xs rounded-md flex justify-center items-center gap-x-1.5 duration-150;
+  }
+
+  .btn-border {
+    @apply border border-grey-border hover:text-grey/60 dark:bg-[#121316] dark:border-grey-border-dark dark:hover:text-white/60;
+  }
+
+  .btn-volt {
+    @apply bg-volt text-grey hover:bg-grey-dark hover:text-white dark:border dark:border-grey-border-dark;
+  }
+
+  .btn-grey {
+    @apply bg-grey-dark text-white hover:bg-volt hover:text-grey dark:bg-[#121316] dark:border dark:border-grey-border-dark dark:hover:text-white/60;
+  }
+}

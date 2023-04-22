@@ -9,9 +9,14 @@ export default {
       colors: {
         grey: { 
           DEFAULT: '#2b2c2f',
-          dark: '#1b1e21'
+          dark: '#1b1e21',
+          border: '#edeee7',
+          "border-dark": '#1c1d1f'
         },
-        volt: '#caf558'
+        volt: {
+          DEFAULT: '#caf558',
+          light: '#f9faf5'
+        }
       }
     },
     fontFamily: {

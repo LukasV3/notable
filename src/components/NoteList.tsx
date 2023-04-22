@@ -3,7 +3,7 @@ import ReactSelect from "react-select";
 import { Tag } from "../App";
 import { useMemo, useState } from "react";
 import { createPortal } from "react-dom";
-import { PencilSquareIcon } from "@heroicons/react/24/solid";
+import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/solid";
 
 type SimplifiedNote = {
   tags: Tag[];
@@ -51,18 +51,12 @@ export function NoteList({
         <h1 className="text-3xl">Notes</h1>
 
         <div className="flex gap-x-2 gap-y-1 flex-wrap">
-          <button
-            onClick={() => setShowEditTagsModal(true)}
-            className="px-4 py-1.5 border border-[#edeee7] text-xs rounded flex items-center gap-x-1.5"
-          >
-            <PencilSquareIcon className="w-3 h-3" />
-            Edit Tags
+          <button onClick={() => setShowEditTagsModal(true)} className="btn btn-border">
+            <PencilSquareIcon className="w-3 h-3 shrink-0" />
+            Edit tags
           </button>
 
-          <Link
-            to="/new"
-            className="px-4 py-1.5 bg-volt text-grey text-xs rounded flex items-center gap-x-1.5 hover:bg-grey-dark hover:text-white duration-150"
-          >
+          <Link to="/new" className="btn btn-volt">
             <span className="text-base leading-4">+</span> Add new note
           </Link>
         </div>
@@ -77,7 +71,8 @@ export function NoteList({
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="border border-grey rounded px-2.5 py-1"
+              className="border border-grey-border rounded-lg px-2.5 py-1.5 placeholder-grey/25 dark:bg-[#22262a] dark:border-none dark:placeholder:text-white/25"
+              placeholder="Search..."
             />
           </div>
 
@@ -92,6 +87,19 @@ export function NoteList({
                 setSelectedTags(tags.map((tag) => ({ label: tag.label, id: tag.value })))
               }
               isMulti
+              classNames={{
+                control: () =>
+                  "!border-grey-border !rounded-lg dark:bg-[#22262a] dark:border-none",
+                placeholder: () => "!text-grey/25 dark:!text-white/25",
+                input: () => "dark:text-white",
+                menu: () => "!border-grey-border !rounded-lg dark:bg-[#22262a]",
+                menuList: () => "!py-0 !rounded-lg",
+                option: (state) =>
+                  `!cursor-pointer ${
+                    state.isFocused ? "!bg-volt dark:text-grey" : "!bg-transparent"
+                  }`,
+                multiValue: () => "!rounded-full !bg-volt !px-1.5",
+              }}
             />
           </div>
         </div>
@@ -121,16 +129,16 @@ function NoteCard({ id, title, tags }: SimplifiedNote) {
   return (
     <Link
       to={`/${id}`}
-      className="flex flex-col gap-y-3 items-center border border-grey rounded p-5"
+      className="flex flex-col gap-y-5 rounded-lg bg-white p-4 dark:bg-[#161818]"
     >
-      <p>{title}</p>
+      <p className="text-sm">{title}</p>
 
       {tags.length > 0 && (
-        <ul className="flex justify-center gap-2 flex-wrap">
+        <ul className="flex gap-2 flex-wrap">
           {tags.map((tag) => (
             <li
               key={tag.id}
-              className="border border-grey rounded px-2.5 py-1 font-bold text-xs"
+              className="bg-volt rounded-full px-2.5 py-1 font-bold text-xs dark:text-grey"
             >
               {tag.label}
             </li>
@@ -148,13 +156,13 @@ function EditTagsModal({
   onDeleteTag,
 }: EditTagsModalProps) {
   return (
-    <div className="fixed inset-0 z-50 h-full w-full bg-gray-600/60 flex justify-center items-start">
-      <div className="container bg-white rounded p-5 mt-10 mx-10 w-full flex flex-col gap-y-6">
+    <div className="fixed inset-0 z-50 h-full w-full bg-grey/80 flex justify-center items-start dark:bg-grey-dark/95">
+      <div className="container max-w-lg bg-volt-light rounded-lg p-5 mt-10 mx-10 w-full flex flex-col gap-y-6 dark:bg-[#0d0f10]">
         <div className="flex items-center justify-between">
-          <h2>Edit Tags</h2>
+          <h2 className="text-xl">Edit Tags</h2>
 
-          <button onClick={onClose} className="text-3xl">
-            &times;
+          <button onClick={onClose} className="btn btn-volt">
+            <span className="text-base leading-4">&#60;</span> Back
           </button>
         </div>
 
@@ -166,14 +174,14 @@ function EditTagsModal({
                   <input
                     onChange={(e) => onUpdateTag(tag.id, e.target.value)}
                     defaultValue={tag.label}
-                    className="grow border border-grey rounded px-2.5 py-1"
+                    className="grow border border-grey-border rounded-lg px-2.5 py-1 dark:bg-[#22262a] dark:border-none"
                   />
 
                   <button
                     onClick={() => onDeleteTag(tag.id)}
-                    className="border border-grey rounded px-2.5 py-1"
+                    className="btn-border bg-white text-grey rounded-full p-2.5 hover:bg-grey hover:text-white duration-150 dark:text-white dark:bg-[#121316]"
                   >
-                    &times;
+                    <TrashIcon className="w-4 h-4" />
                   </button>
                 </li>
               );
