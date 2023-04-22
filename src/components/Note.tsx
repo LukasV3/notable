@@ -15,7 +15,7 @@ export function Note({ onDelete }: NoteProps) {
     <>
       <div className="flex justify-between gap-x-4 mb-8">
         <div className="flex flex-col justify-between gap-y-6">
-          <h1 className="text-3xl">{note.title}</h1>
+          <h2 className="text-2xl">{note.title}</h2>
 
           {note.tags.length > 0 && (
             <ul className="flex gap-2 flex-wrap">

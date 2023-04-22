@@ -7,6 +7,7 @@ import { NoteList } from "./components/NoteList";
 import { NoteLayout } from "./components/NoteLayout";
 import { Note } from "./components/Note";
 import { EditNote } from "./components/EditNote";
+import { TopBar } from "./components/TopBar";
 
 export type Note = {
   id: string;
@@ -88,6 +89,7 @@ function App() {
   return (
     <div className="bg-volt-light min-h-screen dark:bg-[#0d0f10]">
       <div className="container py-6">
+        <TopBar />
         <Routes>
           <Route
             path="/"

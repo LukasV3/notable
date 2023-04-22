@@ -48,7 +48,7 @@ export function NoteList({
   return (
     <>
       <div className="flex flex-wrap justify-between items-center gap-4 mb-4">
-        <h1 className="text-3xl">Notes</h1>
+        <h2 className="text-2xl">Notes</h2>
 
         <div className="flex gap-x-2 gap-y-1 flex-wrap">
           <button onClick={() => setShowEditTagsModal(true)} className="btn btn-border">
