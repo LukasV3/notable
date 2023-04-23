@@ -14,10 +14,10 @@
   }
 
   .btn-volt {
-    @apply bg-volt text-grey hover:bg-grey-dark hover:text-white dark:border dark:border-grey-border-dark;
+    @apply bg-volt text-grey border border-transparent hover:bg-grey-dark hover:text-white dark:border-grey-border-dark;
   }
 
   .btn-grey {
-    @apply bg-grey-dark text-white hover:bg-volt hover:text-grey dark:bg-[#121316] dark:border dark:border-grey-border-dark dark:hover:text-white/60;
+    @apply bg-grey-dark text-white border border-transparent hover:bg-volt hover:text-grey dark:bg-[#121316] dark:border-grey-border-dark dark:hover:text-white/60;
   }
 }

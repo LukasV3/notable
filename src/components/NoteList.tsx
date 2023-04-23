@@ -71,7 +71,7 @@ export function NoteList({
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="border border-grey-border rounded-lg px-2.5 py-1.5 placeholder-grey/25 dark:bg-[#22262a] dark:border-none dark:placeholder:text-white/25"
+              className="border border-grey-border rounded-lg px-2.5 py-1.5 placeholder-grey/25 dark:bg-[#22262a] dark:border-transparent dark:placeholder:text-white/25"
               placeholder="Search..."
             />
           </div>
@@ -89,7 +89,7 @@ export function NoteList({
               isMulti
               classNames={{
                 control: () =>
-                  "!border-grey-border !rounded-lg dark:bg-[#22262a] dark:border-none",
+                  "!border-grey-border !rounded-lg dark:bg-[#22262a] dark:!border-transparent",
                 placeholder: () => "!text-grey/25 dark:!text-white/25",
                 input: () => "dark:text-white",
                 menu: () => "!border-grey-border !rounded-lg dark:bg-[#22262a]",
@@ -98,7 +98,7 @@ export function NoteList({
                   `!cursor-pointer ${
                     state.isFocused ? "!bg-volt dark:text-grey" : "!bg-transparent"
                   }`,
-                multiValue: () => "!rounded-full !bg-volt !px-1.5",
+                multiValue: () => "!rounded-full !bg-volt !px-1.5 !text-grey",
               }}
             />
           </div>
@@ -174,7 +174,7 @@ function EditTagsModal({
                   <input
                     onChange={(e) => onUpdateTag(tag.id, e.target.value)}
                     defaultValue={tag.label}
-                    className="grow border border-grey-border rounded-lg px-2.5 py-1 dark:bg-[#22262a] dark:border-none"
+                    className="grow border border-grey-border rounded-lg px-2.5 py-1 dark:bg-[#22262a] dark:border-transparent"
                   />
 
                   <button

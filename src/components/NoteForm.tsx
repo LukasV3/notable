@@ -45,7 +45,7 @@ export function NoteForm({
             ref={titleRef}
             defaultValue={title}
             id="title"
-            className="border border-grey-border rounded-lg px-2.5 py-1.5 placeholder-grey/25 dark:bg-[#22262a] dark:border-none dark:placeholder:text-white/25"
+            className="border border-grey-border rounded-lg px-2.5 py-1.5 placeholder-grey/25 dark:bg-[#22262a] dark:border-transparent dark:placeholder:text-white/25"
             placeholder="Enter a title..."
             required
           />
@@ -69,7 +69,7 @@ export function NoteForm({
             isMulti
             classNames={{
               control: () =>
-                "!border-grey-border !rounded-lg dark:bg-[#22262a] dark:border-none",
+                "!border-grey-border !rounded-lg dark:bg-[#22262a] dark:!border-transparent",
               placeholder: () => "!text-grey/25 dark:!text-white/25",
               input: () => "dark:text-white",
               menu: () => "!border-grey-border !rounded-lg dark:bg-[#22262a]",
@@ -78,7 +78,7 @@ export function NoteForm({
                 `!cursor-pointer ${
                   state.isFocused ? "!bg-volt dark:text-grey" : "!bg-transparent"
                 }`,
-              multiValue: () => "!rounded-full !bg-volt !px-1.5",
+              multiValue: () => "!rounded-full !bg-volt !px-1.5 !text-grey",
             }}
           />
         </div>
@@ -92,7 +92,7 @@ export function NoteForm({
           id="markdown"
           rows={15}
           required
-          className="rounded-lg p-4 dark:bg-[#22262a] dark:border-none"
+          className="rounded-lg p-4 dark:bg-[#22262a] dark:border-transparent"
         />
       </div>
 
