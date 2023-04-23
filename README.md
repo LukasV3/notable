@@ -3,7 +3,7 @@
 <br>
 
 <p align="center">
-  <a href="">
+  <a href="https://notable-lv3.netlify.app/">
     <img alt="Notable Logo" src="/public/favicon.svg?raw=true" width="200">
   </a>
 </p>
@@ -27,7 +27,7 @@ A note-taking app where users can easily create, edit, and organize their notes 
 
 Design inspiration for the app has been taken from dribbble. You can browse the collection of designs used for inspiration [here](https://dribbble.com/Lukasv3/collections/6476971-Notable-design-inspo).
 
-To explore the live app visit: [https://does-not-exist-yet.com](/).
+To explore the live app visit: [https://notable-lv3.netlify.app/](https://notable-lv3.netlify.app/).
 
 ## Technologies Used
 
@@ -45,27 +45,27 @@ To explore the live app visit: [https://does-not-exist-yet.com](/).
 
 ## Screenshots
 
-<a href="/">
+<a href="https://notable-lv3.netlify.app/">
   <img alt="Notable notes" src="/public/screenshots/notes.jpg?raw=true">
 </a>
 
-<a href="/">
+<a href="https://notable-lv3.netlify.app/">
   <img alt="Notable filter notes" src="/public/screenshots/filter-notes.jpg?raw=true">
 </a>
 
-<a href="/">
+<a href="https://notable-lv3.netlify.app/">
   <img alt="Notable note" src="/public/screenshots/note.jpg?raw=true">
 </a>
 
-<a href="/">
+<a href="https://notable-lv3.netlify.app/">
   <img alt="Notable edit note" src="/public/screenshots/edit-note.jpg?raw=true">
 </a>
 
-<a href="/">
+<a href="https://notable-lv3.netlify.app/">
   <img alt="Notable edit tags" src="/public/screenshots/edit-tags.jpg?raw=true">
 </a>
 
-<a href="/">
+<a href="https://notable-lv3.netlify.app/">
   <img alt="Notable notes - light" src="/public/screenshots/notes-light.jpg?raw=true">
 </a>
 

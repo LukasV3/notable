@@ -22,7 +22,7 @@ export function Note({ onDelete }: NoteProps) {
               {note.tags.map((tag) => (
                 <li
                   key={tag.id}
-                  className="bg-volt rounded-full px-2.5 py-1 font-bold text-xs dark:text-grey"
+                  className="bg-volt rounded-full px-2.5 py-1 text-xs dark:text-grey"
                 >
                   {tag.label}
                 </li>
