@@ -37,7 +37,7 @@ To explore the live app visit: [https://does-not-exist-yet.com](/).
 ## Features
 
 - Create, update and delete notes and their related tags.
-- Notes and tags persisted in local storage.
+- Notes and tags persist in local storage.
 - Dark mode.
 - Markdown support.
 
