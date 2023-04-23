@@ -25,6 +25,8 @@
 
 A note-taking app where users can easily create, edit, and organize their notes using customized tags for quick and efficient search and filtering.
 
+Design inspiration for the app has been taken from dribbble. You can browse the collection of designs used for inspiration [here](https://dribbble.com/Lukasv3/collections/6476971-Notable-design-inspo).
+
 To explore the live app visit: [https://does-not-exist-yet.com](/).
 
 ## Technologies Used

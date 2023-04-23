@@ -20,7 +20,7 @@ export type RawNote = {
 export type RawNoteData = {
   title: string;
   markdown: string;
-  tagIds: string;
+  tagIds: string[];
 };
 
 export type NoteData = {
