@@ -67,7 +67,7 @@ function App() {
   }
 
   function addTag(tag: Tag) {
-    setTags((prev) => [...prev, tag]);
+    setTags((prevTags) => [...prevTags, tag]);
   }
 
   function updateTag(id: string, label: string) {
@@ -83,7 +83,14 @@ function App() {
   }
 
   function deleteTag(id: string) {
-    setTags((prev) => prev.filter((tag) => tag.id !== id));
+    setTags((prevTags) => prevTags.filter((tag) => tag.id !== id));
+
+    setNotes((prevNotes) => {
+      return prevNotes.map((note) => ({
+        ...note,
+        tagIds: note.tagIds.filter((tagId) => tagId !== id),
+      }));
+    });
   }
 
   return (
