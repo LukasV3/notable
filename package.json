@@ -10,12 +10,17 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.17",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.469.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^8.0.6",
     "react-router-dom": "^6.10.0",
     "react-select": "^5.7.2",
     "react-toggle-dark-mode": "^1.1.1",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss-animate": "^1.0.7",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
