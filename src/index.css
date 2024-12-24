@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
-  .btn {
+  /* .btn {
     @apply px-4 py-1.5 text-xs rounded-md flex justify-center items-center gap-x-1.5 duration-150;
-  }
+  } */
 
-  .btn-border {
+  /* .btn-border {
     @apply border border-grey-border hover:text-grey/60 dark:bg-[#121316] dark:border-grey-border-dark dark:hover:text-white/60;
   }
 
@@ -19,12 +19,11 @@
 
   .btn-grey {
     @apply bg-grey-dark text-white border border-transparent hover:bg-volt hover:text-grey dark:bg-[#121316] dark:border-grey-border-dark dark:hover:text-white/60;
-  }
+  } */
 }
 
 @layer base {
   :root {
-
     --background: 0 0% 100%;
 
     --foreground: 0 0% 3.9%;
@@ -73,10 +72,9 @@
 
     --chart-5: 27 87% 67%;
 
-    --radius: 0.5rem
+    --radius: 0.5rem;
   }
   .dark {
-
     --background: 0 0% 3.9%;
 
     --foreground: 0 0% 98%;
@@ -123,7 +121,7 @@
 
     --chart-4: 280 65% 60%;
 
-    --chart-5: 340 75% 55%
+    --chart-5: 340 75% 55%;
   }
 }
 
@@ -132,6 +130,6 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground transition-colors duration-150;
   }
 }

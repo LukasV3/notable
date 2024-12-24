@@ -40,13 +40,19 @@ function App() {
 
   const notesWithTags = useMemo(() => {
     return notes.map((note) => {
-      return { ...note, tags: tags.filter((tag) => note.tagIds.includes(tag.id)) };
+      return {
+        ...note,
+        tags: tags.filter((tag) => note.tagIds.includes(tag.id)),
+      };
     });
   }, [notes, tags]);
 
   function onCreateNote({ tags, ...data }: NoteData) {
     setNotes((prevNotes) => {
-      return [...prevNotes, { ...data, id: uuidV4(), tagIds: tags.map((tag) => tag.id) }];
+      return [
+        ...prevNotes,
+        { ...data, id: uuidV4(), tagIds: tags.map((tag) => tag.id) },
+      ];
     });
   }
 
@@ -94,7 +100,7 @@ function App() {
   }
 
   return (
-    <div className="bg-volt-light min-h-screen dark:bg-[#0d0f10]">
+    <div className="min-h-screen">
       <div className="container py-6">
         <TopBar />
         <Routes>
@@ -112,7 +118,11 @@ function App() {
           <Route
             path="/new"
             element={
-              <NewNote onSubmit={onCreateNote} onAddTag={addTag} availableTags={tags} />
+              <NewNote
+                onSubmit={onCreateNote}
+                onAddTag={addTag}
+                availableTags={tags}
+              />
             }
           />
           <Route path="/:id" element={<NoteLayout notes={notesWithTags} />}>

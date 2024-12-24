@@ -3,7 +3,11 @@ import ReactSelect from "react-select";
 import { Tag } from "../App";
 import { useMemo, useState } from "react";
 import { createPortal } from "react-dom";
-import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/solid";
+import { Button } from "./ui/button";
+import { Plus, SquarePen, Trash2, ChevronLeft } from "lucide-react";
+import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "./ui/input";
 
 type SimplifiedNote = {
   tags: Tag[];
@@ -38,9 +42,12 @@ export function NoteList({
   const filteredNotes = useMemo(() => {
     return notes.filter((note) => {
       return (
-        (title === "" || note.title.toLowerCase().includes(title.toLowerCase())) &&
+        (title === "" ||
+          note.title.toLowerCase().includes(title.toLowerCase())) &&
         (selectedTags.length === 0 ||
-          selectedTags.every((tag) => note.tags.some((noteTag) => noteTag.id === tag.id)))
+          selectedTags.every((tag) =>
+            note.tags.some((noteTag) => noteTag.id === tag.id)
+          ))
       );
     });
   }, [title, selectedTags, notes]);
@@ -51,14 +58,16 @@ export function NoteList({
         <h2 className="text-2xl">Notes</h2>
 
         <div className="flex gap-x-2 gap-y-1 flex-wrap">
-          <button onClick={() => setShowEditTagsModal(true)} className="btn btn-border">
-            <PencilSquareIcon className="w-3 h-3 shrink-0" />
+          <Button onClick={() => setShowEditTagsModal(true)} variant="outline">
+            <SquarePen />
             Edit tags
-          </button>
+          </Button>
 
-          <Link to="/new" className="btn btn-volt">
-            <span className="text-base leading-4">+</span> Add new note
-          </Link>
+          <Button asChild>
+            <Link to="/new">
+              <Plus /> Add new note
+            </Link>
+          </Button>
         </div>
       </div>
 
@@ -66,12 +75,11 @@ export function NoteList({
         <div className="grid gap-y-2 gap-x-4 sm:grid-cols-2">
           <div className="flex flex-col gap-1">
             <label htmlFor="title">Title</label>
-            <input
+            <Input
               id="title"
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="border border-grey-border rounded-lg px-2.5 py-1.5 placeholder-grey/25 dark:bg-[#22262a] dark:border-transparent dark:placeholder:text-white/25"
               placeholder="Search..."
             />
           </div>
@@ -79,24 +87,31 @@ export function NoteList({
           <div className="flex flex-col gap-1">
             <label htmlFor="react-select-3-input">Tags</label>
             <ReactSelect
-              value={selectedTags.map((tag) => ({ label: tag.label, value: tag.id }))}
+              value={selectedTags.map((tag) => ({
+                label: tag.label,
+                value: tag.id,
+              }))}
               options={availableTags.map((tag) => {
                 return { label: tag.label, value: tag.id };
               })}
               onChange={(tags) =>
-                setSelectedTags(tags.map((tag) => ({ label: tag.label, id: tag.value })))
+                setSelectedTags(
+                  tags.map((tag) => ({ label: tag.label, id: tag.value }))
+                )
               }
               isMulti
               classNames={{
                 control: () =>
-                  "!border-grey-border !rounded-lg dark:bg-[#22262a] dark:!border-transparent",
-                placeholder: () => "!text-grey/25 dark:!text-white/25",
+                  "shadow-sm !border-input !rounded-md !bg-transparent !text-base md:!text-sm !focus-visible:outline-none !focus-visible:ring-1 !focus-visible:ring-ring",
+                placeholder: () => "!text-muted-foreground",
                 input: () => "dark:text-white",
-                menu: () => "!border-grey-border !rounded-lg dark:bg-[#22262a]",
-                menuList: () => "!py-0 !rounded-lg",
+                menu: () => "!border-input !rounded-md",
+                menuList: () => "!py-0 !rounded-md",
                 option: (state) =>
                   `!cursor-pointer ${
-                    state.isFocused ? "!bg-volt dark:text-grey" : "!bg-transparent"
+                    state.isFocused
+                      ? "!bg-volt dark:text-grey"
+                      : "!bg-transparent"
                   }`,
                 multiValue: () => "!rounded-full !bg-volt !px-1.5 !text-grey",
               }}
@@ -107,7 +122,12 @@ export function NoteList({
 
       <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
         {filteredNotes.map((note) => (
-          <NoteCard key={note.id} id={note.id} title={note.title} tags={note.tags} />
+          <NoteCard
+            key={note.id}
+            id={note.id}
+            title={note.title}
+            tags={note.tags}
+          />
         ))}
       </div>
 
@@ -127,24 +147,24 @@ export function NoteList({
 
 function NoteCard({ id, title, tags }: SimplifiedNote) {
   return (
-    <Link
-      to={`/${id}`}
-      className="flex flex-col gap-y-5 rounded-lg bg-white p-4 dark:bg-[#161818]"
-    >
-      <p className="text-sm">{title}</p>
+    <Link to={`/${id}`}>
+      <Card>
+        <CardHeader>
+          <CardTitle>{title}</CardTitle>
+        </CardHeader>
 
-      {tags.length > 0 && (
-        <ul className="flex gap-2 flex-wrap">
-          {tags.map((tag) => (
-            <li
-              key={tag.id}
-              className="bg-volt rounded-full px-2.5 py-1 text-xs dark:text-grey"
-            >
-              {tag.label}
-            </li>
-          ))}
-        </ul>
-      )}
+        <CardFooter>
+          {tags.length > 0 && (
+            <div className="flex gap-2 flex-wrap">
+              {tags.map((tag) => (
+                <Badge key={tag.id} variant="secondary">
+                  {tag.label}
+                </Badge>
+              ))}
+            </div>
+          )}
+        </CardFooter>
+      </Card>
     </Link>
   );
 }
@@ -161,9 +181,9 @@ function EditTagsModal({
         <div className="flex items-center justify-between">
           <h2 className="text-xl">Edit Tags</h2>
 
-          <button onClick={onClose} className="btn btn-volt">
-            <span className="text-base leading-4">&#60;</span> Back
-          </button>
+          <Button onClick={onClose} variant="secondary">
+            <ChevronLeft /> Back
+          </Button>
         </div>
 
         {availableTags.length > 0 && (
@@ -171,18 +191,17 @@ function EditTagsModal({
             {availableTags.map((tag) => {
               return (
                 <li key={tag.id} className="flex gap-x-3">
-                  <input
+                  <Input
                     onChange={(e) => onUpdateTag(tag.id, e.target.value)}
                     defaultValue={tag.label}
-                    className="grow border border-grey-border rounded-lg px-2.5 py-1 dark:bg-[#22262a] dark:border-transparent"
                   />
 
-                  <button
+                  <Button
                     onClick={() => onDeleteTag(tag.id)}
-                    className="btn-border bg-white text-grey rounded-full p-2.5 hover:bg-grey hover:text-white duration-150 dark:text-white dark:bg-[#121316]"
+                    variant="destructive"
                   >
-                    <TrashIcon className="w-4 h-4" />
-                  </button>
+                    <Trash2 />
+                  </Button>
                 </li>
               );
             })}

@@ -1,7 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useNote } from "./NoteLayout";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/solid";
+import { Button } from "./ui/button";
+import { ChevronLeft, SquarePen, Trash } from "lucide-react";
+import { Badge } from "./ui/badge";
 
 type NoteProps = {
   onDelete: (id: string) => void;
@@ -18,44 +20,39 @@ export function Note({ onDelete }: NoteProps) {
           <h2 className="text-2xl">{note.title}</h2>
 
           {note.tags.length > 0 && (
-            <ul className="flex gap-2 flex-wrap">
+            <div className="flex gap-2 flex-wrap">
               {note.tags.map((tag) => (
-                <li
-                  key={tag.id}
-                  className="bg-volt rounded-full px-2.5 py-1 text-xs dark:text-grey"
-                >
+                <Badge key={tag.id} variant="secondary">
                   {tag.label}
-                </li>
+                </Badge>
               ))}
-            </ul>
+            </div>
           )}
         </div>
 
         <div className="flex flex-col justify-between items-end gap-y-6">
-          <Link to="/">
-            <button className="btn btn-volt">
-              <span className="text-base leading-4">&#60;</span> Back
-            </button>
-          </Link>
+          <Button asChild variant="secondary">
+            <Link to="/">
+              <ChevronLeft /> Back
+            </Link>
+          </Button>
 
           <div className="flex flex-wrap justify-end gap-2">
-            <Link to={`/${note.id}/edit`}>
-              <button className="btn btn-border">
-                <PencilSquareIcon className="w-3 h-3 shrink-0" />
-                Edit note
-              </button>
-            </Link>
+            <Button asChild variant="outline">
+              <Link to={`/${note.id}/edit`}>
+                <SquarePen /> Edit note
+              </Link>
+            </Button>
 
-            <button
+            <Button
               onClick={() => {
                 onDelete(note.id);
                 navigate("/");
               }}
-              className="btn btn-grey"
+              variant="destructive"
             >
-              <TrashIcon className="w-3 h-3 shrink-0" />
-              Delete note
-            </button>
+              <Trash /> Delete note
+            </Button>
           </div>
         </div>
       </div>
