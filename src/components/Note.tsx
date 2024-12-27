@@ -57,7 +57,7 @@ export function Note({ onDelete }: NoteProps) {
         </div>
       </div>
 
-      <ReactMarkdown className="bg-white p-4 rounded-lg min-h-[360px] dark:bg-[#161818] dark:border-transparent">
+      <ReactMarkdown className="bg-transparent p-4 rounded-md min-h-[360px]">
         {note.markdown}
       </ReactMarkdown>
     </>

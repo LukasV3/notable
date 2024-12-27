@@ -13,7 +13,7 @@ export function TopBar() {
   }, [isDarkMode]);
 
   return (
-    <div className="flex justify-between items-center border-b border-border mb-5 pb-4">
+    <div className="flex justify-between items-center border-b mb-5 pb-4">
       <Link to="/">
         <h1 className="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-foreground">
           Notable

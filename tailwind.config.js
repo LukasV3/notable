@@ -4,16 +4,6 @@ export default {
   theme: {
     extend: {
       colors: {
-        grey: {
-          DEFAULT: "#2b2c2f",
-          dark: "#1b1e21",
-          border: "#edeee7",
-          "border-dark": "#1c1d1f",
-        },
-        volt: {
-          DEFAULT: "#caf558",
-          light: "#f9faf5",
-        },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

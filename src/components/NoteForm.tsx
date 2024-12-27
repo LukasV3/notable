@@ -76,18 +76,26 @@ export function NoteForm({
             isMulti
             classNames={{
               control: () =>
-                "shadow-sm !border-input !rounded-md !bg-transparent !text-base md:!text-sm !focus-visible:outline-none !focus-visible:ring-1 !focus-visible:ring-ring",
+                "shadow-sm !border-input !rounded-md !bg-card !text-base md:!text-sm",
               placeholder: () => "!text-muted-foreground",
               input: () => "dark:text-white",
               menu: () => "!border-input !rounded-md",
               menuList: () => "!py-0 !rounded-md",
               option: (state) =>
-                `!cursor-pointer ${
-                  state.isFocused
-                    ? "!bg-volt dark:text-grey"
-                    : "!bg-transparent"
+                `!cursor-pointer dark:text-primary-foreground ${
+                  state.isFocused ? "!bg-primary" : "!bg-transparent"
                 }`,
-              multiValue: () => "!rounded-full !bg-volt !px-1.5 !text-grey",
+              multiValue: () =>
+                "!rounded-full !bg-primary !px-1.5 !text-primary-foreground",
+              multiValueRemove: () => "!text-primary-foreground",
+            }}
+            styles={{
+              control: (baseStyles, state) => ({
+                ...baseStyles,
+                boxShadow: state.isFocused
+                  ? "0 0 0px 1px rgba(0, 0, 0, 1)"
+                  : "none",
+              }),
             }}
           />
         </div>

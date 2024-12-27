@@ -102,18 +102,26 @@ export function NoteList({
               isMulti
               classNames={{
                 control: () =>
-                  "shadow-sm !border-input !rounded-md !bg-transparent !text-base md:!text-sm !focus-visible:outline-none !focus-visible:ring-1 !focus-visible:ring-ring",
+                  "shadow-sm !border-input !rounded-md !bg-card !text-base md:!text-sm !focus-visible:outline-none !focus-visible:ring-1 !focus-visible:ring-ring",
                 placeholder: () => "!text-muted-foreground",
                 input: () => "dark:text-white",
                 menu: () => "!border-input !rounded-md",
                 menuList: () => "!py-0 !rounded-md",
                 option: (state) =>
-                  `!cursor-pointer ${
-                    state.isFocused
-                      ? "!bg-volt dark:text-grey"
-                      : "!bg-transparent"
+                  `!cursor-pointer dark:text-primary-foreground ${
+                    state.isFocused ? "!bg-primary" : "!bg-transparent"
                   }`,
-                multiValue: () => "!rounded-full !bg-volt !px-1.5 !text-grey",
+                multiValue: () =>
+                  "!rounded-full !bg-primary !px-1.5 !text-primary-foreground",
+                multiValueRemove: () => "!text-primary-foreground",
+              }}
+              styles={{
+                control: (baseStyles, state) => ({
+                  ...baseStyles,
+                  boxShadow: state.isFocused
+                    ? "0 0 0px 1px rgba(0, 0, 0, 1)"
+                    : "none",
+                }),
               }}
             />
           </div>
@@ -176,8 +184,8 @@ function EditTagsModal({
   onDeleteTag,
 }: EditTagsModalProps) {
   return (
-    <div className="fixed inset-0 z-50 h-full w-full bg-grey/80 flex justify-center items-start dark:bg-grey-dark/95">
-      <div className="container max-w-lg bg-volt-light rounded-lg p-5 mt-10 mx-10 w-full flex flex-col gap-y-6 dark:bg-[#0d0f10]">
+    <div className="fixed inset-0 z-50 h-full w-full bg-primary-foreground/90 flex justify-center items-start">
+      <div className="container max-w-lg bg-card rounded-md p-5 mt-10 mx-10 w-full flex flex-col gap-y-6">
         <div className="flex items-center justify-between">
           <h2 className="text-xl">Edit Tags</h2>
 
