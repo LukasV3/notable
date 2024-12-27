@@ -76,7 +76,7 @@ export function NoteForm({
             isMulti
             classNames={{
               control: () =>
-                "shadow-sm !border-input !rounded-md !bg-card !text-base md:!text-sm",
+                "!border-input !rounded-md !bg-card !text-base md:!text-sm",
               placeholder: () => "!text-muted-foreground",
               input: () => "dark:text-white",
               menu: () => "!border-input !rounded-md",
@@ -94,7 +94,7 @@ export function NoteForm({
                 ...baseStyles,
                 boxShadow: state.isFocused
                   ? "0 0 0px 1px rgba(0, 0, 0, 1)"
-                  : "none",
+                  : "0 1px 2px 0 rgb(0 0 0 / 0.05)",
               }),
             }}
           />

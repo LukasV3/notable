@@ -120,7 +120,7 @@ export function NoteList({
                   ...baseStyles,
                   boxShadow: state.isFocused
                     ? "0 0 0px 1px rgba(0, 0, 0, 1)"
-                    : "none",
+                    : "0 1px 2px 0 rgb(0 0 0 / 0.05)",
                 }),
               }}
             />
