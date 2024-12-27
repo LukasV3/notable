@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 
 export function TopBar() {
@@ -12,10 +13,13 @@ export function TopBar() {
   }, [isDarkMode]);
 
   return (
-    <div className="flex justify-between items-center border-b border-grey-border mb-5 pb-4 dark:border-grey">
-      <h1 className="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-volt to-grey">
-        Notable
-      </h1>
+    <div className="flex justify-between items-center border-b border-border mb-5 pb-4">
+      <Link to="/">
+        <h1 className="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-foreground">
+          Notable
+        </h1>
+      </Link>
+
       <DarkModeSwitch
         checked={isDarkMode}
         onChange={(checked) => setDarkMode(checked)}
